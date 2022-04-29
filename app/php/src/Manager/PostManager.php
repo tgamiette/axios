@@ -45,14 +45,12 @@ class PostManager extends BaseManager {
 	}
 	
 	public function addPost(Post $post) {
-		$sql = "INSERT INTO `comment` (`title`, `content`,`author_id`) VALUES (:title, :description, :author);";
+		$sql = "INSERT INTO `comment` (`title`, `content`,`author_id`,`date`) VALUES (:title, :description, :author, :date);";
 		$request = $this->db->prepare($sql);
 		
 		$request->bindValue(':title', $post->getTitle());
-		
 		$request->bindValue(':description', $post->getContent());
-		$request->bindValue(':date', (new \DateTime())->format('dd-mm-YYYY'));
-		
+		$request->bindValue(':date', (new \DateTime())->format('d-m-Y'));
 		$request->bindValue(':author', $post->getAuthorId(), \PDO::PARAM_INT);
 		
 		return $request->execute();

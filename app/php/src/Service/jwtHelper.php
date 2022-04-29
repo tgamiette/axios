@@ -50,14 +50,14 @@ class jwtHelper {
 		$publicKey = openssl_pkey_get_details($res)['key'];
 		
 		try {
-			$jwt = JWT::decode($token, new Key($publicKey, 'RS256'));
-			var_dump($jwt);
-			return $jwt;
+			return JWT::decode($token, new Key($publicKey, 'RS256'));
+		}catch (ExpiredException $e) {
+			 return json_decode(explode('.',$token)[1]);
 		}
-		catch (\UnexpectedValueException $e) {
-			throw new \UnexpectedValueException($e, 666);
+		catch (\Exception $e) {
+			throw new \Exception($e);
 		}
-//
+
 	}
 	
 	public function decode($token) {

@@ -8,7 +8,7 @@ export default function useGetBlogList(): Function {
     return (): Promise<any> => {
         return API.get('post')
             .then(response => {
-                    console.log(response.data);
+                    console.log(response);
                     return response.data.value
                 }
             );

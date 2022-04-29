@@ -33,7 +33,7 @@ export default function usePostBlogFrom(): Function {
 
         return API.post('post', params)
             .then(response => {
-                    return true
+                console.log(response)
                 }
             );
     }

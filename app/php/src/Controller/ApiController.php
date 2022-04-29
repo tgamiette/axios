@@ -110,7 +110,6 @@ class ApiController extends BaseController {
 			$token = $_COOKIE['token'];
 			$user = $this->checkAccess($token);
 			$postManager = new PostManager();
-$this->renderJSON($_POST);
 			$post = new Post($_POST);
 			$post->setAuthorId($user->getId());
 			
