@@ -6,7 +6,7 @@ ps:
 
 install:
 		docker-compose up -d --build
-		docker exec -i testaxios_db_1 mysql -u root -p azerty mysql < docker/dump/blog.sql
+		docker exec -i axios_db_1 mysql -u root -p azerty mysql < docker/dump/blog.sql
 		cd app/react && npm install && npm run dev
 
 

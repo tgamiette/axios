@@ -12,8 +12,8 @@ import BlogForm from "./Components/BlogForm";
 import useLogin from "./Hook/useLogin";
 import useRegister from "./Hook/useRegister";
 import useGetBlogList from "./Hook/useGetBlogList";
-
 import jose from "jose";
+
 
 export default function App() {
     const [loggedUser, setLoggedUser] = useState<LoginResponseInterface>({
@@ -61,7 +61,7 @@ export default function App() {
         } else if (!needsLogin && localUser.username !== '') {
             console.log('register ?', localUser.username)
             register(localUser.username, localUser.password)
-                .then((isRegister) => {
+                .then((isRegister: any) => {
                     if (isRegister) {
                         // setLoggedUser(data)
                     }
